@@ -28,6 +28,7 @@ function updateDom(employees) {
   const employeeTable = document.querySelector("#employee");
   const totalCost = document.querySelector("#totalCost");
 
+  employeeTable.innerHTML = "";
   for (let i = 0; i < employees.length; i++) {
     document.getElementById("employee").innerHTML += `
             <tr>
@@ -47,14 +48,8 @@ function updateDom(employees) {
     totalMonthlyCost += Number(employees[i].annualSalary) / 12;
   }
 
-  if (employees.length === 0) {
-    totalMonthlyCost = 0;
-  }
-
   if (totalMonthlyCost > 20000) {
     totalCost.style.backgroundColor = "red";
-  } else {
-    totalCost.style.backgroundColor = "white";
   }
 
   totalCost.innerHTML = `Total cost: $${totalMonthlyCost}`;
